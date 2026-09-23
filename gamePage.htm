@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/gamePagestyle.css">
+    <link rel="stylesheet" href="./styles/gamePagestyle.css?v=2">
     <title>TUNELY In Session!</title>
 </head>
 <body>
@@ -21,6 +21,9 @@
           <a class="artistBtn" onclick="selectArtist('Taylor Swift')">Taylor Swift</a>
       </div>
     </div>
+
+    <!-- Selected Artist -->
+    <h1 id="artistTitle" aria-live="polite"></h1>
 
     <!-- Game Board -->
     <div id="gameBoard"></div>
@@ -54,6 +57,6 @@
     </div>
 
     <script src="./scripts/words.js?v=1"></script>
-    <script src="./scripts/index.js?v=5"></script>
+    <script src="./scripts/index.js?v=6"></script>
 </body>
 </html>
