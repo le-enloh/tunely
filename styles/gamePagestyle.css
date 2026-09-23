@@ -104,8 +104,15 @@ body {
   filter: brightness(110%);
 }
 
+#artistTitle {
+  margin: 30px auto 16px;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  color: #333;
+}
+
 #gameBoard {
-    margin-top: 40px;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
