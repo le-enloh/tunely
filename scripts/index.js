@@ -516,6 +516,7 @@ window.onload = function () {
 
   if(selectedArtist) {
     artistTitle.textContent = selectedArtist
+    artistOverlay.style.display = "none"
     loadSongs(selectedArtist)
     startHintCountdown()
   } else {
