@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/gamePagestyle.css">
+    <title>TUNELY In Session!</title>
+</head>
+<body>
+    <a href="./index.html" id="homeBtn" class="button">Home</a>
+
+    <button id="resetBtn" class="button">Reset Game</button>
+
+    <!-- Artist Choices -->
+    <div class="choice-overlay" id="choiceOverlay">
+      <a href="./index.html" id="homeBtn" class="button">Home</a>
+      <div class="artists">
+          <h1>Choose an artist</h1>
+          <a class="artistBtn" onclick="selectArtist('Ariana Grande')">Ariana Grande</a>
+          <a class="artistBtn" onclick="selectArtist('5SOS')">5SOS</a>
+          <a class="artistBtn" onclick="selectArtist('Taylor Swift')">Taylor Swift</a>
+      </div>
+    </div>
+
+    <!-- Game Board -->
+    <div id="gameBoard"></div>
+    <div id="keyboard"></div>
+    
+    <!-- Hint Button -->
+    <button id="hintBtn" class="button disabled" type="button">Hint<span id="hintTimer"></span></button>
+    <div id="hintBox"></div>
+
+    <!-- Notification/Message Overlay -->
+    <div id="customOverlay" class="overlay" style="display: none;">
+        <div class="overlay-content">
+          <p id="overlayMessage"></p>
+          <div class="overlay-buttons">
+            <button id="overlayHomeBtn">Home</button>
+            <button id="overlayPlayAgainBtn" style="display: none;">Play Again</button>
+            <button id="overlayCloseBtn" style="display: none">Close</button>
+          </div>
+        </div>
+    </div>
+
+    <!-- Reset Confirmation Overlay -->
+    <div class="overlay" id="confirmResetOverlay" style="display: none;">
+      <div class="overlay-content">
+        <p>This will clear your selected artist and hint usage. Are you sure you want to restart?</p>
+        <div class="overlay-buttons">
+          <button id="confirmResetBtn">Yes, Reset</button>
+          <button id="cancelResetBtn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./scripts/index.js?v=3"></script>
+</body>
+</html>
