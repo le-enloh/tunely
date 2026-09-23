@@ -126,8 +126,6 @@ function loadSongs(artist) {
     chosenSong = words[Math.floor(Math.random() * words.length)]
     wordLength = chosenSong.length
 
-    console.log("Target song: " + chosenSong)
-
     createKeyboard()
     const keyboard = document.getElementById("keyboard")
 
@@ -159,42 +157,18 @@ function loadSongs(artist) {
     return chosenSong
   }
 
-// Helper function to check for invalid words
-async function isValidWord(word) {
-  // A file:// page cannot reliably call the online dictionary because of
-  // browser cross-origin restrictions. Allow the guess so play can continue.
-  if (window.location.protocol === "file:") return true
-
-  const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-  return response.ok
-}
-
-async function checkGuess() {
+function checkGuess() {
   const guess = getGuessFromTiles()
   const guessWord = guess.join("").toUpperCase()
   const target = chosenSong.toUpperCase()
-  
-  // First check if it's the correct answer - bypass dictionary check
-  if (guessWord === target) {
-    const result = getGuessResult(guess, target)
-    animateTiles(guess, result)
-    updateKeyboardAfterDelay(guess, result)
-    currentRow++
-    currentTile = 0
-    checkGameEnd(guessWord, target)
+
+  // The correct song is always accepted, including titles that may not appear
+  // in a standard English dictionary (for example, "Ghostin").
+  if (guessWord !== target && !validWords.has(guessWord.toLowerCase())) {
+    handleInvalidWord()
     return
   }
-  
-  // Only check dictionary for non-matching answers
-  try {
-    const isWord = await isValidWord(guessWord.toLowerCase())
-    if (!isWord) return handleInvalidWord()
-  } catch (error) {
-    // Do not freeze the game when the external dictionary is unavailable.
-    console.warn("Could not validate the guess:", error)
-    showNotification("Dictionary unavailable - accepting this guess.", 2500)
-  }
-  
+
   const result = getGuessResult(guess, target)
   animateTiles(guess, result)
   updateKeyboardAfterDelay(guess, result)
@@ -215,11 +189,12 @@ function getGuessFromTiles() {
 
 function handleInvalidWord() {
   showNotification("That's not a valid English word!", 2000)
+
   for (let col = 0; col < chosenSong.length; col++) {
     const tile = document.getElementById(`tile-${currentRow}-${col}`)
-    const front = tile.querySelector(".tile-front")
-    front.textContent = ""
+    tile.querySelector(".tile-front").textContent = ""
   }
+
   currentTile = 0
   isAnimating = false
 }
@@ -331,11 +306,13 @@ function handleKeyInput(key) {
 if (key == "Enter") {
   if (currentTile === chosenSong.length) {
     isAnimating = true
-    checkGuess().catch(error => {
+    try {
+      checkGuess()
+    } catch (error) {
       console.error("Could not process the guess:", error)
       isAnimating = false
       showNotification("Something went wrong. Please try again.", 3000)
-    })
+    }
   } else {
     showNotification("Not enough letters!", 2000)
   }
