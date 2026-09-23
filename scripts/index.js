@@ -387,6 +387,7 @@ const confirmResetOverlay = document.getElementById("confirmResetOverlay")
 const confirmResetBtn = document.getElementById("confirmResetBtn")
 const cancelResetBtn = document.getElementById("cancelResetBtn")
 const artistOverlay = document.getElementById("choiceOverlay")
+const artistTitle = document.getElementById("artistTitle")
 
 // Trigger Reset Game Confirmation Pop up 
 resetBtn.addEventListener("click", function() {
@@ -405,6 +406,7 @@ confirmResetBtn.addEventListener("click", function() {
   currentRow = 0
   currentTile = 0
   isAnimating = false
+  artistTitle.textContent = ""
 
   // Show artist selection
   artistOverlay.style.display = "block"
@@ -503,6 +505,7 @@ function showOverlay(message, options = {}) {
 
 function selectArtist(artistName) {
   localStorage.setItem('selectedArtist', artistName)
+  artistTitle.textContent = artistName
   artistOverlay.style.display = "none"
   loadSongs(artistName)
   startHintCountdown()
@@ -512,6 +515,7 @@ window.onload = function () {
   const selectedArtist = localStorage.getItem("selectedArtist")
 
   if(selectedArtist) {
+    artistTitle.textContent = selectedArtist
     loadSongs(selectedArtist)
     startHintCountdown()
   } else {
