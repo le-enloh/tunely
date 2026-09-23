@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUNELY</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div class="container">
+        <h1>TUNELY</h1>
+        <p class="bodyText">Get 6 chances to guess a song name by one of Le En's top 3 artists.
+        <br>
+        Click "Play" to see who!</p>
+        
+        <div>
+            <a class="playBtn" href="./gamePage.htm">PLAY</a>
+        </div>
+        <div class="rulesScroll" id="scrollToRules">
+            <a class="scrollLink" href="#rules">Rules of the Game</a>
+            <svg id="arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path d="M12 16l-6-6h12l-6 6z" fill="black"/>
+            </svg>
+        </div>    
+    </div>
+
+    <!-- Rules Section -->
+    <section id="rules" class="rulesSection">
+        <ol style="text-align: left; max-width: 600px; margin: auto; margin-bottom: 10%;">
+            <li><strong>Guess the Word:</strong></li>
+            Pick an artist. You have 6 tries to guess a song name by the chosen artist.
+            <li><strong>There are Hints! But there's a catch:</strong></li>
+            The dictionary definition of the word will be shown once you click the "hint" button. However, you only get 3 definitions (hints) per day.
+            <li><strong>Get Color Hints:</strong></li>
+            <ul>
+                <li>🟩 Green: Right letter, right spot</li>
+                <li>🟨 Yellow: Right letter, wrong spot</li>
+                <li>🟥 Red: Letter is not in the word at all</li>
+            </ul>
+            <li><strong>Use Color Hints to Improve:</strong></li>
+            Use the colors from previous guesses to guide your next guess.
+        </ol>
+        <a class="playBtn" href="./gamePage.htm">PLAY</a>  
+    </section>
+
+    <script src="./scripts/svg.min.js"></script>
+    <script src="./scripts/main.js"></script>
+</body>
+</html>
+
