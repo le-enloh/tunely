@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+/* linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%) linear-gradient(90deg, #efd5ff 0%, #515ada 100%)*/
+
+html, body {
+    width: 100%;
+    height:100%;
+    scroll-behavior: smooth;
+    font-family: "Jua", sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  body {
+      background: linear-gradient(-45deg, #e3ffe7, #d9e7ff, #efd5ff, #515ada);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
+  }
+  
+  @keyframes gradient {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 2rem;
+}
+
+.button {
+    font-family: "Sour Gummy";
+    display: inline-block;
+    border: none;
+    border-radius: 20px;
+    padding: 0.75rem 2rem;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.playBtn {
+    display: inline-block;
+    border: none;
+    border-radius: 20px;
+    padding: 0.75rem 2rem;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    background-color: pink;
+}
+
+.playBtn:hover {
+    filter: brightness(110%);
+    transform: scale(1.2);
+}
+
+.rulesScroll {
+    margin-top: 4rem;
+    font-size: 1rem;
+}
+
+.scrollLink {
+    text-decoration: none; 
+    color: inherit;
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.scrollLink::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: lightblue;
+    z-index: -1;
+    transition: width 0.3s ease;
+}
+
+.scrollLink:hover {
+    transform: scale(1.1);
+}
+
+.scrollLink:hover::before {
+    cursor: pointer;
+    width: 100%;
+}
+
+#arrow {
+    display: block;
+    margin: 0 auto;
+}
+
+#rules {
+    padding: 10rem 3rem;
+}
+
