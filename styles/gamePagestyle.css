@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+html {
+  height: 100%;
+  background:
+    radial-gradient(at 20% 10%, #d9e7ff 0%, transparent 60%),
+    radial-gradient(at 80% 0%, #efd5ff 0%, transparent 60%),
+    radial-gradient(at 50% 100%, #f3f3f3 0%, transparent 70%);
+  background-blend-mode: screen;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Jua", sans-serif;
+}
+
+.button {
+    display: inline-block;
+    border: none;
+    border-radius: 20px;
+    padding: 0.75rem 2rem;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+#homeBtn {
+    background-color: lightblue;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+#homeBtn:hover {
+    filter: brightness(110%);
+    transform: scale(1.1);
+}
+
+#resetBtn {
+    position: fixed;
+    background-color: rgb(241, 117, 117);
+    top: 40px;
+    right: 40px;
+    z-index: 9999;
+    font-family: inherit;
+}
+
+#resetBtn:hover {
+    filter: brightness(90%);
+    transform: scale(1.1);
+}
+
+#choiceOverlay {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #f3f3f3, #d9e7ff, #efd5ff);
+  background-size: cover;
+}
+
+.artists {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+}
+
+.artistBtn {
+  background-color: #ccccff;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 0.75rem 2rem;
+  margin: 0 0.5rem 1rem 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.artistBtn:hover {
+  transform: scale(1.1);
+  filter: brightness(110%);
+}
+
+#homeBtn {
+  background-color: pink;
+  position: fixed;
+  top: 40px;
+  left: 40px;
+}
+
+#homeBtn:hover {
+  filter: brightness(110%);
+}
+
+#gameBoard {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .row {
+    display: flex;
+    gap: 10px;
+  }
+
+#keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 6px;
+}
+
+.key {
+  padding: 20px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #d3d6da;
+  cursor: pointer;
+  font-family: inherit;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.special-key {
+  background-color: lightblue;
+}
+
+.key:hover {
+  filter: brightness(90%);
+  transform: scale(1.1);
+}
+
+/* Colour Code Keyboard */
+.key.correct {
+  background-color: #6aaa64;
+  color: white;
+}
+
+.key.present {
+  background-color: #ffbf2a;
+  color: white;
+}
+
+.key.absent {
+  background-color: #ff6060;
+  color: white;
+}
+
+
+/* Tiles Styling */
+.tile {
+  width: 40px;
+  height: 40px;
+  perspective: 1000px;
+  display: inline-block;
+}
+
+.tile-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+
+/* Tile Flip Animation */
+.tile.flip .tile-inner {
+  transform: rotateX(180deg);
+}
+
+.tile-front,
+.tile-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+}
+
+.tile-front {
+  background-color: white;
+}
+
+.tile-back {
+  transform: rotateX(180deg);
+  background-color: white; /* default, will be overridden by result classes */
+}
+
+/* Result colors */
+.tile-back.correct {
+  background-color: #6aaa64;
+  color: white;
+}
+
+.tile-back.present {
+  background-color: #ffbf2a;
+  color: white;
+}
+
+.tile-back.absent {
+  background-color: #ff6060;
+  color: white;
+}
+
+#hintBox {
+  position: fixed;
+  top: 70px;
+  left: 20px;
+  max-width: 250px;
+  padding: 1rem;
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #333;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  display: none; /* Hidden until hint is shown */
+  z-index: 9999;
+}
+
+#hintBtn {
+  background-color: pink;
+  position: fixed;
+  top: 100px;
+  left: 40px;
+  font-family: inherit;
+}
+
+#hintBtn:hover {
+  transform: scale(1.1);
+  filter: brightness(110%);
+}
+
+#hintBtn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+
+#hintTimer {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.notification {
+  position: fixed;
+  background-color: #c6dcc9;
+  color: #5c655d;
+  top: 25%;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  border: 2px solid #5c655d;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.notification.fade-out {
+  opacity: 0;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+
+.notification.shake {
+  animation: shake 0.4s ease;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.overlay-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  text-align: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.overlay-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.overlay-buttons button {
+  padding: 0.5rem 1.5rem;
+  font-family: inherit;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: lightblue;
+}
+
+#overlayHomeBtn {
+  background-color: lightgray;
+}
+
+.overlay-buttons button:hover {
+  transform: scale(1.1);
+  filter: brightness(110%);
+}
