@@ -512,6 +512,17 @@ function selectArtist(artistName) {
 }
 
 window.onload = function () {
+  const pageParams = new URLSearchParams(window.location.search)
+  const shouldChooseArtist = pageParams.get("chooseArtist") === "1"
+
+  if (shouldChooseArtist) {
+    localStorage.removeItem("selectedArtist")
+    artistTitle.textContent = ""
+    artistOverlay.style.display = "flex"
+    window.history.replaceState({}, "", window.location.pathname)
+    return
+  }
+
   const selectedArtist = localStorage.getItem("selectedArtist")
 
   if(selectedArtist) {
